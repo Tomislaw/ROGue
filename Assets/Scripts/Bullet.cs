@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Bullet : MonoBehaviour
 {
     [SerializeField]
@@ -9,41 +10,33 @@ public class Bullet : MonoBehaviour
     [SerializeField]
     private int damage = 40;
 
-    [SerializeField]
     private Rigidbody2D rb;
 
     [SerializeField]
     private GameObject impactEffect;
 
-    private Collider2D collider2D;
-    
-    private void Start()
+    private void Awake()
     {
-        rb.velocity = transform.right * speed;
-        collider2D = GetComponent<Collider2D>();
+        rb = GetComponent<Rigidbody2D>();
+    }
+    public void Launch(Vector2 dir)
+    {
+        rb.velocity = dir * speed;
+    }
+
+    private void Update()
+    {
+        transform.rotation = Quaternion.LookRotation(Vector3.forward, rb.velocity);
     }
 
     private void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        var enemy = hitInfo.GetComponent<Enemy>();
+        var enemy = hitInfo.GetComponent<Damageable>();
         if (enemy != null)
         {
-            enemy.TakeDamage(damage);
+            enemy.Damage(damage);
         }
         
-        StartCoroutine(SpawnImpactEffect());
-    }
-
-    private IEnumerator SpawnImpactEffect()
-    {
-        var impactGameObject = Instantiate(impactEffect, transform.position, transform.rotation);
-
-        yield return new WaitForSeconds(1f);
-        if (impactGameObject != null)
-        {
-            Destroy(impactGameObject);
-        }
-
         Destroy(gameObject);
     }
 }

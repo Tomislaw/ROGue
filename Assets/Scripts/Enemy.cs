@@ -29,7 +29,6 @@ public class Enemy : MonoBehaviour
     {
         var pos = Vector3.MoveTowards (transform.localPosition, player.transform.position, Time.deltaTime * moveSpeed);
         targetPosition.x = pos.x;
-        targetPosition.y = player.transform.position.y - yOffset;
         transform.localPosition = targetPosition;
     }
 

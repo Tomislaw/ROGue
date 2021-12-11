@@ -10,14 +10,26 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField]
     private float runSpeed = 15f;
 
+    [SerializeField]
+    private float jumpSpeed = 15f;
+
+    [SerializeField]
+    private GameObject groundCheck;
+
+    [SerializeField]
+    private LayerMask groundLayerMask;
+
     private Animator animator;
     private Rigidbody2D rb2D;
     
     private float horizontalMove;
+    private float verticalMove;
+    private bool isJumping = false;
     private bool facingRight = true; // For determining which way the player is currently facing.
     private Vector3 velocity = Vector3.zero;
     
     private static readonly int Speed = Animator.StringToHash("Speed");
+    private static readonly int Jumping = Animator.StringToHash("Jumping");
 
     private void Awake()
     {
@@ -27,13 +39,42 @@ public class CharacterController2D : MonoBehaviour
 	
     private void Update () {
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
-
+        verticalMove = Input.GetAxisRaw("Vertical") * runSpeed;
         animator.SetFloat(Speed, Mathf.Abs(horizontalMove));
+        animator.SetBool(Jumping, !IsGrounded());
     }
 
     private void FixedUpdate()
     {
+        if (isJumping)
+        {
+            if (rb2D.velocity.y <= 0 && IsGrounded())
+                isJumping = false;
+        }
+
         Move(horizontalMove * Time.fixedDeltaTime);
+        if (!isJumping && verticalMove > 0 && IsGrounded())
+            Jump();
+        else if (verticalMove < 0)
+            DropFromPlatform();
+    }
+
+    private bool IsGrounded()
+    {
+        if(groundCheck==null)
+            return false;
+        return Physics2D.Linecast(transform.position, groundCheck.transform.position, groundLayerMask);
+    }
+
+    private void Jump()
+    {
+        isJumping = true;
+        rb2D.AddForce(new Vector2(0, jumpSpeed));
+    }
+
+    private void DropFromPlatform()
+    {
+        // todo
     }
 
     private void Move(float move)

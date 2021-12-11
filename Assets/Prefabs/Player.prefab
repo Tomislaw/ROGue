@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5747385473025121612}
   - component: {fileID: 6364882348907847842}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: ShootAudioSource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -301,7 +301,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6424108337273141953}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: LeftHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -625,7 +625,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6424108337745065513}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RightLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -656,7 +656,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6424108337798939127}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -691,7 +691,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6424108337968922162}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: CeilingCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -721,7 +721,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6424108338004585524}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RightHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -752,7 +752,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6424108338062738402}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -872,7 +872,7 @@ GameObject:
   - component: {fileID: 6424108338425152576}
   - component: {fileID: 6424108338425152577}
   - component: {fileID: 6424108338425152638}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -912,6 +912,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSmoothing: 0.05
   runSpeed: 25
+  jumpSpeed: 800
+  groundCheck: {fileID: 6424108338494332276}
+  groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 384
 --- !u!50 &6424108338425152583
 Rigidbody2D:
   serializedVersion: 4
@@ -927,7 +932,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 5
+  m_GravityScale: 4
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -1009,14 +1014,14 @@ MonoBehaviour:
   armTransform: {fileID: 5015633936789130412}
   firePoint: {fileID: 6424108338062738402}
   damage: 40
-  fireRate: 1
+  fireRate: 0.3
   cameraShakeAmount: 2
   cameraShakeLength: 0.2
   impactEffect: {fileID: 1473625048454486, guid: 284f05ab582ef494a9ab1dd8bc1e76ae, type: 3}
   lineRenderer: {fileID: 6424108337439979309}
   collisionLayerMask:
     serializedVersion: 2
-    m_Bits: 823
+    m_Bits: 4294967295
   maxArmRotations: {x: -20, y: 15}
   shootAudioSource: {fileID: 6364882348907847842}
 --- !u!114 &6424108338425152638
@@ -1124,7 +1129,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6424108338494332277}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1139,7 +1144,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6424108338494332276}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.001, z: 0}
+  m_LocalPosition: {x: 0, y: -1.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6424108338425152582}
@@ -1237,7 +1242,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6424108338717090649}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: LeftLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1478,7 +1483,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5015633936789130412}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: ArmTransform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
