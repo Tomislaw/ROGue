@@ -42,6 +42,7 @@ public class CharacterController2D : MonoBehaviour
         verticalMove = Input.GetAxisRaw("Vertical") * runSpeed;
         animator.SetFloat(Speed, Mathf.Abs(horizontalMove));
         animator.SetBool(Jumping, !IsGrounded());
+        Debug.Log(Input.GetAxisRaw("Horizontal"));
     }
 
     private void FixedUpdate()
@@ -69,6 +70,7 @@ public class CharacterController2D : MonoBehaviour
     private void Jump()
     {
         isJumping = true;
+        rb2D.velocity = new Vector3(rb2D.velocity.x, 0,0);
         rb2D.AddForce(new Vector2(0, jumpSpeed));
     }
 

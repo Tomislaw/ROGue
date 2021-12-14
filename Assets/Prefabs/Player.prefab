@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5747385473025121612}
   - component: {fileID: 6364882348907847842}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ShootAudioSource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6424108337032276327}
   - component: {fileID: 6424108337032276324}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: hero_legLeft_top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -220,7 +220,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6424108337198518037}
   - component: {fileID: 6424108337198518034}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: hero_belt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -301,7 +301,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6424108337273141953}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LeftHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333,7 +333,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6424108337439979308}
   - component: {fileID: 6424108337439979309}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Line
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -462,7 +462,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6424108337513420594}
   - component: {fileID: 6424108337513420595}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: hero_legLeft_down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -544,7 +544,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6424108337683480348}
   - component: {fileID: 6424108337683480349}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: hero_armRight_top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -625,7 +625,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6424108337745065513}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RightLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -656,7 +656,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6424108337798939127}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -691,7 +691,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6424108337968922162}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CeilingCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -721,7 +721,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6424108338004585524}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RightHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -752,7 +752,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6424108338062738402}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -783,7 +783,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6424108338389192742}
   - component: {fileID: 6424108338389192743}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: hero_legRight_top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -870,9 +870,11 @@ GameObject:
   - component: {fileID: 6424108338425152578}
   - component: {fileID: 6424108338425152581}
   - component: {fileID: 6424108338425152576}
-  - component: {fileID: 6424108338425152577}
-  - component: {fileID: 6424108338425152638}
-  m_Layer: 0
+  - component: {fileID: 5229825840168970729}
+  - component: {fileID: 784912391137885115}
+  - component: {fileID: 9014122581849020877}
+  - component: {fileID: 5928591060159384888}
+  m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -999,7 +1001,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &6424108338425152577
+--- !u!114 &5229825840168970729
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1008,36 +1010,54 @@ MonoBehaviour:
   m_GameObject: {fileID: 6424108338425152584}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9f2e3da3d0d1de4491739e280d1ce7e, type: 3}
+  m_Script: {fileID: 11500000, guid: 53be282eeec4f034e862e5aaaaf36e4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  armTransform: {fileID: 5015633936789130412}
-  firePoint: {fileID: 6424108338062738402}
-  damage: 40
-  fireRate: 0.3
-  cameraShakeAmount: 2
-  cameraShakeLength: 0.2
-  impactEffect: {fileID: 1473625048454486, guid: 284f05ab582ef494a9ab1dd8bc1e76ae, type: 3}
-  lineRenderer: {fileID: 6424108337439979309}
-  collisionLayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  maxArmRotations: {x: -20, y: 15}
-  shootAudioSource: {fileID: 6364882348907847842}
---- !u!114 &6424108338425152638
+  health: 100
+  maxHealth: 100
+  destroyOnDeath: 0
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &784912391137885115
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6424108338425152584}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df60c8bec1b4a2e4c944bbabe45ce278, type: 3}
+  m_Script: {fileID: 11500000, guid: dc9a1f8d3538c194d9fcca0df541d831, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePoint: {fileID: 6424108338062738402}
-  bulletPrefab: {fileID: 1539632861300792, guid: 96ae8f9dd8fd89941bc4d858375f035b, type: 3}
+  FlashMaterial: {fileID: 2100000, guid: 94071b4b85194d149b0a11237706a65f, type: 2}
+  FlashSpeed: 0.1
+--- !u!114 &9014122581849020877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6424108338425152584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b7f14014578e3a40b5954f498969645, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxRotation: {x: -30, y: 30}
+  armTransform: {fileID: 7269431544844342944}
+--- !u!210 &5928591060159384888
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6424108338425152584}
+  m_Enabled: 1
+  m_SortingLayerID: -178746083
+  m_SortingLayer: 3
+  m_SortingOrder: 0
 --- !u!1 &6424108338462390387
 GameObject:
   m_ObjectHideFlags: 0
@@ -1048,7 +1068,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6424108338462390384}
   - component: {fileID: 6424108338462390385}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: hero_legRight_down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1129,7 +1149,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6424108338494332277}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1160,7 +1180,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6424108338566160378}
   - component: {fileID: 6424108338566160379}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: hero_armLeft_top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1242,7 +1262,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6424108338717090649}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LeftLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1274,7 +1294,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6424108338805209467}
   - component: {fileID: 221689886576094082}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: hero_body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1318,7 +1338,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6424108338828670282}
   - component: {fileID: 6424108338828670283}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: hero_armRight_hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1400,7 +1420,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6424108338958473333}
   - component: {fileID: 6424108338958473330}
-  m_Layer: 0
+  - component: {fileID: 4006280621823899822}
+  m_Layer: 10
   m_Name: hero_armLeft_downGUN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1474,6 +1495,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4006280621823899822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6424108338958473332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df60c8bec1b4a2e4c944bbabe45ce278, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firePoint: {fileID: 6424108338062738402}
+  bulletPrefab: {fileID: 587004365211039166, guid: cfdeeb87437863f40aa12a2af386d483, type: 3}
+  rateOfFire: 0.1
+  spread: 5
 --- !u!1 &7269431544844342944
 GameObject:
   m_ObjectHideFlags: 0
@@ -1483,7 +1520,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5015633936789130412}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ArmTransform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1515,7 +1552,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7858625195827371854}
   - component: {fileID: 6635225833279093050}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: hero_torso
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -82,10 +82,10 @@ public class RayCastWeapon : MonoBehaviour
         GameObject impactGameObject = null;
         if (hitInfo)
         {
-            var enemy = hitInfo.transform.GetComponent<Enemy>();
+            var enemy = hitInfo.transform.GetComponent<Damageable>();
             if (enemy != null)
             {
-                enemy.TakeDamage(damage);
+                enemy.Damage(damage);
             }
 
             impactGameObject = Instantiate(impactEffect, hitInfo.point, Quaternion.identity);

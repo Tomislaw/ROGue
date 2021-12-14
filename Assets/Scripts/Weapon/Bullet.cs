@@ -19,14 +19,13 @@ public class Bullet : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
     }
-    public void Launch(Vector2 dir)
-    {
-        rb.velocity = dir * speed;
-    }
 
     private void Update()
     {
-        transform.rotation = Quaternion.LookRotation(Vector3.forward, rb.velocity);
+        if(rb != null)
+        {
+            rb.velocity = transform.right * speed;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D hitInfo)
@@ -37,6 +36,13 @@ public class Bullet : MonoBehaviour
             enemy.Damage(damage);
         }
         
+        if (impactEffect != null)
+        {
+            var point = hitInfo.ClosestPoint(transform.position);
+            var hitEffect = Instantiate(impactEffect);
+            hitEffect.transform.position = point;
+        }
+            
         Destroy(gameObject);
     }
 }

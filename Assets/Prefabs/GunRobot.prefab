@@ -23,13 +23,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4676737481516961393}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: -3.2699966, y: 0.289999, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5339204596457727552}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &4996691975455196196
 GameObject:
   m_ObjectHideFlags: 0
@@ -457,8 +457,9 @@ GameObject:
   - component: {fileID: 2445387035798577097}
   - component: {fileID: 5133050083740030682}
   - component: {fileID: 5957299029662275515}
+  - component: {fileID: 5372792665304893523}
   m_Layer: 8
-  m_Name: Enemy-2
+  m_Name: GunRobot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -550,6 +551,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   maxHealth: 100
+  destroyOnDeath: 1
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
@@ -570,8 +572,9 @@ MonoBehaviour:
   AimTime: 1
   CooldownTime: 0
   Speed: 1
+  MovementSmoothing: 0.05
   aimingObject: {fileID: 8424992121070258621}
-  maxAimRotation: {x: -30, y: 30}
+  maxAimRotation: {x: -60, y: 60}
   barrelPoint: {fileID: 4676737481516961393}
   bulletPrefab: {fileID: 587004365211039153, guid: 862dd203cd4d8c84e85333caddccf1e6, type: 3}
   facingRight: 0
@@ -608,6 +611,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &5372792665304893523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8424992120847453258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc9a1f8d3538c194d9fcca0df541d831, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FlashMaterial: {fileID: 2100000, guid: 94071b4b85194d149b0a11237706a65f, type: 2}
+  FlashSpeed: 0.1
 --- !u!1 &8424992121070258621
 GameObject:
   m_ObjectHideFlags: 0

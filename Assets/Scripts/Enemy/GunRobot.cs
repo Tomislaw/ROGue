@@ -12,6 +12,8 @@ public class GunRobot : MonoBehaviour
     public float CooldownTime;
     public float Speed;
 
+    public float MovementSmoothing = 0.05f;
+
     private float timeToFire;
     private float timeToAim;
     private float timeToCooldown;
@@ -19,9 +21,11 @@ public class GunRobot : MonoBehaviour
     public GameObject aimingObject;
     public Vector2 maxAimRotation = new Vector2(30,30);
 
-    private CharacterController2D player;
-    private Animator animator;
-    private Rigidbody2D rb2D;
+    protected Vector3 velocity = Vector3.zero;
+
+    protected CharacterController2D player;
+    protected Animator animator;
+    protected Rigidbody2D rb2D;
 
     [SerializeField]
     private GameObject barrelPoint;
@@ -48,20 +52,20 @@ public class GunRobot : MonoBehaviour
         Cooldown
     }
 
-    private void Awake()
+    protected void Awake()
     {
         player = FindObjectOfType<CharacterController2D>();
         animator = GetComponent<Animator>();
         rb2D = GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
+    protected void Update()
     {
         animator.SetBool(Move, rb2D.velocity.x > 0.2 || rb2D.velocity.x < -0.2);
    
     }
 
-    private void FixedUpdate()
+    protected void FixedUpdate()
     {
         if (player == null)
             return;
@@ -139,13 +143,14 @@ public class GunRobot : MonoBehaviour
         }
     }
 
-    private void Walk(Vector3 position)
+    protected virtual void Walk(Vector3 position)
     {
         FacePosition(position);
-        rb2D.velocity = new Vector2(transform.position.x < position.x ? Speed : -Speed, rb2D.velocity.y);
+        var targetVelocity = new Vector2(transform.position.x < position.x ? Speed : -Speed, rb2D.velocity.y);
+        rb2D.velocity = Vector3.SmoothDamp(rb2D.velocity, targetVelocity, ref velocity, MovementSmoothing);
     }
 
-    private void Aim(Vector3 position)
+    protected virtual void Aim(Vector3 position)
     {
         if (aimingObject == null)
             return;
@@ -164,17 +169,17 @@ public class GunRobot : MonoBehaviour
         angle = Mathf.Clamp(angle, maxAimRotation.x, maxAimRotation.y);
         aimingObject.transform.localRotation = Quaternion.Euler(0f, 0f, angle);
     }
-    private void Fire()
+    protected void Fire()
     {
         if(barrelPoint != null && bulletPrefab != null)
         {
             var bullet = Instantiate(bulletPrefab);
             bullet.transform.position = barrelPoint.transform.position;
-            bullet.Launch(barrelPoint.transform.right);
+            bullet.transform.rotation = barrelPoint.transform.rotation;
         }
     }
 
-    private void FacePosition(Vector3 position)
+    protected void FacePosition(Vector3 position)
     {
         bool right = transform.position.x < position.x;
         if(right != facingRight)

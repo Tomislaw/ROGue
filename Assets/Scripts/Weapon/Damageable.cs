@@ -5,16 +5,23 @@ using UnityEngine.Events;
 
 public class Damageable : MonoBehaviour
 {
-    [SerializeField]
     public int health;
 
-    [SerializeField]
     public int maxHealth;
+
+    public bool destroyOnDeath;
 
     public bool IsDead { get; private set; }
 
     [SerializeField]
     private UnityEvent OnDeath;
+
+    private FlashFX flash;
+
+    private void Start()
+    {
+        flash = GetComponent<FlashFX>();
+    }
 
     public void Damage(int damage)
     {
@@ -22,10 +29,17 @@ public class Damageable : MonoBehaviour
             return;
 
         health -= damage;
-        if(health <= 0)
+
+        if (health <= 0)
         {
             IsDead = true;
             OnDeath.Invoke();
+            if (destroyOnDeath)
+                Destroy(gameObject);
+        }
+        else if (damage > 0 && flash != null)
+        {
+            flash.Flash();
         }
     }
 }
