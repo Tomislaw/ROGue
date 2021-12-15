@@ -10,6 +10,9 @@ public class Bullet : MonoBehaviour
     [SerializeField]
     private int damage = 40;
 
+    [SerializeField]
+    private float lifeTime = 2f;
+
     private Rigidbody2D rb;
 
     [SerializeField]
@@ -18,14 +21,20 @@ public class Bullet : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+     
     }
 
     private void Update()
     {
+
         if(rb != null)
         {
             rb.velocity = transform.right * speed;
         }
+
+        lifeTime -= Time.deltaTime;
+        if(lifeTime < 0)
+            Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D hitInfo)

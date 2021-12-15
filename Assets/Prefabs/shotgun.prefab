@@ -94,8 +94,8 @@ GameObject:
   - component: {fileID: 7038040591173092216}
   - component: {fileID: 7038040591173092217}
   - component: {fileID: 7038040591173092218}
-  - component: {fileID: 2539589639763083767}
   - component: {fileID: 7038040591173092220}
+  - component: {fileID: 1511358220570602959}
   m_Layer: 12
   m_Name: shotgun
   m_TagString: Untagged
@@ -176,22 +176,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 9.99, y: 11.99}
   m_EdgeRadius: 0
---- !u!114 &2539589639763083767
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7038040591173092221}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54c1007a0e5b569438fe097c65759a76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mask:
-    serializedVersion: 2
-    m_Bits: 1024
-  health: 30
 --- !u!95 &7038040591173092220
 Animator:
   serializedVersion: 3
@@ -211,3 +195,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1511358220570602959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7038040591173092221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c60d02edb8c3fa47a532b485f2c32ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mask:
+    serializedVersion: 2
+    m_Bits: 1024
+  prefabWeapon: {fileID: 2040140218017224043, guid: ed6bf06db78b85142b1a2927ffb2a23f, type: 3}

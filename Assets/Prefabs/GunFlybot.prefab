@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3313213268999394660}
   - component: {fileID: 1925519917142826536}
-  m_Layer: 8
+  m_Layer: 14
   m_Name: robot02_laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2430986629166319767}
   - component: {fileID: 2430986629166319766}
-  m_Layer: 8
+  m_Layer: 14
   m_Name: robot02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,7 +182,7 @@ GameObject:
   - component: {fileID: 2480466182525072633}
   - component: {fileID: 2549705298259775064}
   - component: {fileID: 1933430149955775782}
-  m_Layer: 8
+  m_Layer: 14
   m_Name: GunFlybot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -257,6 +257,8 @@ MonoBehaviour:
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
+  spawnOnDeath:
+  - {fileID: 1755349173569476, guid: 3c45864be6a059a4a82a25e285298338, type: 3}
 --- !u!114 &1138570067253217169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,7 +328,7 @@ SortingGroup:
   m_GameObject: {fileID: 2430986630103516755}
   m_Enabled: 1
   m_SortingLayerID: -1632490725
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
 --- !u!1 &2430986630661867763
 GameObject:
@@ -338,7 +340,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2430986630661867762}
   - component: {fileID: 5947536879273939404}
-  m_Layer: 8
+  m_Layer: 14
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -369,7 +371,7 @@ SortingGroup:
   m_GameObject: {fileID: 2430986630661867763}
   m_Enabled: 1
   m_SortingLayerID: -1632490725
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
 --- !u!1 &7326723952652178631
 GameObject:
@@ -380,7 +382,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8360267367999022198}
-  m_Layer: 8
+  m_Layer: 14
   m_Name: robot02_barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}

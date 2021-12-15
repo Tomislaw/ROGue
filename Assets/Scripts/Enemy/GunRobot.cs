@@ -13,6 +13,7 @@ public class GunRobot : MonoBehaviour
     public float Speed;
 
     public float MovementSmoothing = 0.05f;
+    public float AimSmoothing = 0.05f;
 
     private float timeToFire;
     private float timeToAim;
@@ -22,6 +23,7 @@ public class GunRobot : MonoBehaviour
     public Vector2 maxAimRotation = new Vector2(30,30);
 
     protected Vector3 velocity = Vector3.zero;
+    protected float velocityAngle = 0;
 
     protected CharacterController2D player;
     protected Animator animator;
@@ -164,10 +166,14 @@ public class GunRobot : MonoBehaviour
         {
             dir.x *= -1;
         }
-
-        float angle = Mathf.RoundToInt(Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg);
-        angle = Mathf.Clamp(angle, maxAimRotation.x, maxAimRotation.y);
-        aimingObject.transform.localRotation = Quaternion.Euler(0f, 0f, angle);
+     
+        var targetAngle = Mathf.Round(Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg);
+        var smoothedAngle = Mathf.SmoothDampAngle(
+                aimingObject.transform.eulerAngles.z,
+                Mathf.Clamp(targetAngle, maxAimRotation.x, maxAimRotation.y),
+                ref velocityAngle,
+                AimSmoothing);
+        aimingObject.transform.localRotation = Quaternion.Euler(0f, 0f, smoothedAngle);
     }
     protected void Fire()
     {

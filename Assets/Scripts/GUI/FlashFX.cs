@@ -32,13 +32,15 @@ public class FlashFX : MonoBehaviour
     {
         foreach(var pair in _materials)
         {
-            pair.Key.material = FlashMaterial;
+            if (pair.Key != null)
+                pair.Key.material = FlashMaterial;
         }
         yield return new WaitForSeconds(FlashSpeed);
 
         foreach (var pair in _materials)
         {
-            pair.Key.material = pair.Value;
+            if(pair.Key != null)    
+                pair.Key.material = pair.Value;
         }
 
         flashRoutine = null;

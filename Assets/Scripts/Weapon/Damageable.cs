@@ -18,6 +18,8 @@ public class Damageable : MonoBehaviour
 
     private FlashFX flash;
 
+    public List<GameObject> spawnOnDeath = new List<GameObject>();
+
     private void Start()
     {
         flash = GetComponent<FlashFX>();
@@ -36,6 +38,12 @@ public class Damageable : MonoBehaviour
             OnDeath.Invoke();
             if (destroyOnDeath)
                 Destroy(gameObject);
+
+            foreach(var go in spawnOnDeath)
+            {
+                var g = Instantiate(go);
+                g.transform.position = transform.position;
+            }
         }
         else if (damage > 0 && flash != null)
         {

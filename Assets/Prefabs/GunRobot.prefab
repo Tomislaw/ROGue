@@ -555,6 +555,8 @@ MonoBehaviour:
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
+  spawnOnDeath:
+  - {fileID: 1755349173569476, guid: 3c45864be6a059a4a82a25e285298338, type: 3}
 --- !u!114 &2445387035798577097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -588,7 +590,7 @@ SortingGroup:
   m_GameObject: {fileID: 8424992120847453258}
   m_Enabled: 1
   m_SortingLayerID: -1632490725
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
 --- !u!50 &5957299029662275515
 Rigidbody2D:

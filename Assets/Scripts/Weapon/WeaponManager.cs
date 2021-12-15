@@ -7,8 +7,16 @@ public class WeaponManager : MonoBehaviour
     public Vector2 maxRotation = new Vector2 (-30,30);
     public GameObject armTransform;
 
-    public void ChangeWeapon(PrefabWeapon weapon)
+    public void ChangeWeapon(GameObject weapon)
     {
+        if (armTransform == null || weapon == null)
+            return;
+
+        foreach (Transform child in armTransform.transform)
+        {
+            Destroy(child.gameObject);
+        }
+        Instantiate(weapon, armTransform.transform);
 
     }
 
