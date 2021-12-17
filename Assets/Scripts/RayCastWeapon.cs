@@ -76,7 +76,6 @@ public class RayCastWeapon : MonoBehaviour
     
     private IEnumerator Shoot()
     {
-        cameraShake.Shake(cameraShakeAmount, cameraShakeLength);
         shootAudioSource.Play();
         var hitInfo = Physics2D.Raycast(firePoint.position, firePoint.right, 9999, collisionLayerMask);
         GameObject impactGameObject = null;

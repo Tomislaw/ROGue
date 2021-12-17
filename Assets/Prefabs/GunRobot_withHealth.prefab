@@ -555,6 +555,9 @@ MonoBehaviour:
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
+  OnDamage:
+    m_PersistentCalls:
+      m_Calls: []
   spawnOnDeath:
   - {fileID: 1755349173569476, guid: 3c45864be6a059a4a82a25e285298338, type: 3}
   - {fileID: 7038040591173092221, guid: fb6e964b1e1d5c945b592f88d58245f2, type: 3}
@@ -574,13 +577,13 @@ MonoBehaviour:
   FireTime: 0.3
   AimTime: 1
   CooldownTime: 0
-  Speed: 1
+  Speed: 2
   MovementSmoothing: 0.05
   AimSmoothing: 0.05
   aimingObject: {fileID: 8424992121070258621}
   maxAimRotation: {x: -60, y: 60}
   barrelPoint: {fileID: 4676737481516961393}
-  bulletPrefab: {fileID: 587004365211039153, guid: 862dd203cd4d8c84e85333caddccf1e6, type: 3}
+  bulletPrefab: {fileID: 587004365211039166, guid: 862dd203cd4d8c84e85333caddccf1e6, type: 3}
   facingRight: 0
   state: 0
 --- !u!210 &5133050083740030682

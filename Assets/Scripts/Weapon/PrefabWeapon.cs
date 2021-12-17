@@ -16,12 +16,8 @@ public class PrefabWeapon : MonoBehaviour
 
     private float timeToNextBullet = 0;
 
-    private bool isFiring = false;
+    public bool isFiring = false;
 
-    private void Update()
-    {
-        isFiring = Input.GetButton("Fire1");
-    }
 
     private void FixedUpdate()
     {

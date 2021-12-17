@@ -285,19 +285,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0daf3945b5c21ae41a77ad212974a1af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EngageDistance: 8
+  EngageDistance: 9
   FireTime: 0.3
   AimTime: 1
   CooldownTime: 1
-  Speed: 15
+  Speed: 19
   MovementSmoothing: 0.5
+  AimSmoothing: 0.05
   aimingObject: {fileID: 2430986629166319764}
   maxAimRotation: {x: -60, y: 60}
   barrelPoint: {fileID: 7326723952652178631}
-  bulletPrefab: {fileID: 587004365211039153, guid: 862dd203cd4d8c84e85333caddccf1e6, type: 3}
+  bulletPrefab: {fileID: 587004365211039166, guid: 862dd203cd4d8c84e85333caddccf1e6, type: 3}
   facingRight: 0
   state: 0
   flyingHeight: 2
+  maxFlyingHeight: 4
 --- !u!50 &2549705298259775064
 Rigidbody2D:
   serializedVersion: 4

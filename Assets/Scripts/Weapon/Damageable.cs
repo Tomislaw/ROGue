@@ -16,6 +16,9 @@ public class Damageable : MonoBehaviour
     [SerializeField]
     private UnityEvent OnDeath;
 
+    [SerializeField]
+    private UnityEvent OnDamage;
+
     private FlashFX flash;
 
     public List<GameObject> spawnOnDeath = new List<GameObject>();
@@ -25,12 +28,19 @@ public class Damageable : MonoBehaviour
         flash = GetComponent<FlashFX>();
     }
 
+    public void Kill()
+    {
+        Damage(health);
+    }
+
     public void Damage(int damage)
     {
         if (IsDead)
             return;
 
         health -= damage;
+
+        OnDamage.Invoke();
 
         if (health <= 0)
         {
@@ -47,6 +57,7 @@ public class Damageable : MonoBehaviour
         }
         else if (damage > 0 && flash != null)
         {
+
             flash.Flash();
         }
     }

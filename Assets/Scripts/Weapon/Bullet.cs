@@ -24,7 +24,7 @@ public class Bullet : MonoBehaviour
      
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
 
         if(rb != null)
@@ -32,7 +32,7 @@ public class Bullet : MonoBehaviour
             rb.velocity = transform.right * speed;
         }
 
-        lifeTime -= Time.deltaTime;
+        lifeTime -= Time.fixedDeltaTime;
         if(lifeTime < 0)
             Destroy(gameObject);
     }

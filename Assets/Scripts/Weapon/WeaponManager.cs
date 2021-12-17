@@ -6,7 +6,7 @@ public class WeaponManager : MonoBehaviour
 {
     public Vector2 maxRotation = new Vector2 (-30,30);
     public GameObject armTransform;
-
+    public CharacterController2D controller2D;
     public void ChangeWeapon(GameObject weapon)
     {
         if (armTransform == null || weapon == null)
@@ -16,7 +16,9 @@ public class WeaponManager : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
-        Instantiate(weapon, armTransform.transform);
+        var newWeapon = Instantiate(weapon, armTransform.transform);
+        if (controller2D != null && newWeapon.GetComponent<PrefabWeapon>())
+            controller2D.weapon = newWeapon.GetComponent<PrefabWeapon>();
 
     }
 
@@ -34,15 +36,5 @@ public class WeaponManager : MonoBehaviour
         float angle = Mathf.RoundToInt(Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg);
         angle = Mathf.Clamp(angle, maxRotation.x, maxRotation.y);
         armTransform.transform.localRotation = Quaternion.Euler(0f, 0f, angle);
-    }
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

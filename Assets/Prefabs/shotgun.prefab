@@ -210,4 +210,5 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 1024
+  pickupSound: {fileID: 8300000, guid: 459ff277d598a604896edc550042cbaa, type: 3}
   prefabWeapon: {fileID: 2040140218017224043, guid: ed6bf06db78b85142b1a2927ffb2a23f, type: 3}

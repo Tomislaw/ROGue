@@ -6,6 +6,12 @@ public class FollowMouse : MonoBehaviour
     public GameObject cursor;
     public GameObject midpoint;
     public GameObject target;
+
+    public void Start()
+    {
+        Cursor.visible = false;
+    }
+
     private void Update()
     {
         var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);

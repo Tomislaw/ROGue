@@ -5,7 +5,7 @@ using UnityEngine;
 public class Pickup : MonoBehaviour
 {
     public LayerMask mask;
-
+    public AudioClip pickupSound;
     private bool entered = false;
 
     protected virtual void Entered(GameObject gameObject)
@@ -19,6 +19,7 @@ public class Pickup : MonoBehaviour
         {
             Entered(col.gameObject);
             entered = true;
+            AudioSource.PlayClipAtPoint(pickupSound, col.transform.position);
             Destroy(gameObject);
         }
     }

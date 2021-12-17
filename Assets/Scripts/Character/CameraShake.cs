@@ -8,6 +8,8 @@ public class CameraShake : MonoBehaviour {
 
     private CinemachineVirtualCamera mainCam;
     private CinemachineBasicMultiChannelPerlin camNoise;
+
+    [SerializeField]
     private float shakeAmount = 0;
 
     private void Awake()
@@ -16,9 +18,8 @@ public class CameraShake : MonoBehaviour {
         camNoise = mainCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
     }
 
-    public void Shake(float amount, float length)
+    public void Shake(float length)
     {
-        shakeAmount = amount;
         InvokeRepeating(nameof(BeginShake), 0, 0.01f);
         Invoke(nameof(StopShake), length);
     }

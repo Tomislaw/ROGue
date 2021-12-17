@@ -14,7 +14,10 @@ public class CharacterController2D : MonoBehaviour
     private float jumpSpeed = 15f;
 
     [SerializeField]
-    private GameObject groundCheck;
+    private Collider2D groundCheck;
+
+    [SerializeField]
+    public PrefabWeapon weapon;
 
     [SerializeField]
     private LayerMask groundLayerMask;
@@ -30,6 +33,10 @@ public class CharacterController2D : MonoBehaviour
     
     private static readonly int Speed = Animator.StringToHash("Speed");
     private static readonly int Jumping = Animator.StringToHash("Jumping");
+    private static readonly int Killed = Animator.StringToHash("Dead");
+    private bool isDead = false;
+    private bool shoot = false;
+
 
     private void Awake()
     {
@@ -38,20 +45,30 @@ public class CharacterController2D : MonoBehaviour
     }
 	
     private void Update () {
+        if (isDead)
+            return;
+
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
         verticalMove = Input.GetAxisRaw("Vertical") * runSpeed;
+        shoot = Input.GetButton("Fire1");
+
         animator.SetFloat(Speed, Mathf.Abs(horizontalMove));
         animator.SetBool(Jumping, !IsGrounded());
-        Debug.Log(Input.GetAxisRaw("Horizontal"));
     }
 
     private void FixedUpdate()
     {
+        if(isDead) 
+            return;
+
         if (isJumping)
         {
             if (rb2D.velocity.y <= 0 && IsGrounded())
                 isJumping = false;
         }
+
+        if(weapon != null)
+            weapon.isFiring = shoot;
 
         Move(horizontalMove * Time.fixedDeltaTime);
         if (!isJumping && verticalMove > 0 && IsGrounded())
@@ -64,7 +81,8 @@ public class CharacterController2D : MonoBehaviour
     {
         if(groundCheck==null)
             return false;
-        return Physics2D.Linecast(transform.position, groundCheck.transform.position, groundLayerMask);
+
+        return groundCheck.IsTouchingLayers(groundLayerMask);
     }
 
     private void Jump()
@@ -72,6 +90,18 @@ public class CharacterController2D : MonoBehaviour
         isJumping = true;
         rb2D.velocity = new Vector3(rb2D.velocity.x, 0,0);
         rb2D.AddForce(new Vector2(0, jumpSpeed));
+    }
+
+    public void Dead()
+    {
+        isDead = true;
+        animator.SetBool(Killed, isDead);
+        if (weapon != null)
+        {
+            weapon.isFiring = false;
+            weapon.enabled = false;
+        }
+            
     }
 
     private void DropFromPlatform()

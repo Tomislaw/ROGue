@@ -33,7 +33,7 @@ public class GunRobot : MonoBehaviour
     private GameObject barrelPoint;
 
     [SerializeField]
-    private Bullet bulletPrefab;
+    private GameObject bulletPrefab;
 
     [SerializeField]
     private bool facingRight = false;
