@@ -64,7 +64,11 @@ public class GunRobot : MonoBehaviour
     protected void Update()
     {
         animator.SetBool(Move, rb2D.velocity.x > 0.2 || rb2D.velocity.x < -0.2);
-   
+    }
+
+    public void SetEngageDistance(float distance)
+    {
+        this.EngageDistance = distance;
     }
 
     protected void FixedUpdate()

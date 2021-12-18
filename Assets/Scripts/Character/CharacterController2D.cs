@@ -4,23 +4,21 @@ using UnityEngine;
 public class CharacterController2D : MonoBehaviour
 {
     [Range(0, .3f)]
-    [SerializeField]
-    private float movementSmoothing = .05f; // How much to smooth out the movement
+    public float movementSmoothing = .05f; // How much to smooth out the movement
 
-    [SerializeField]
-    private float runSpeed = 15f;
+    public float runSpeed = 15f;
 
-    [SerializeField]
-    private float jumpSpeed = 15f;
+    public float jumpSpeed = 15f;
 
-    [SerializeField]
-    private Collider2D groundCheck;
 
-    [SerializeField]
+    public Collider2D groundCheck;
+
     public PrefabWeapon weapon;
 
-    [SerializeField]
-    private LayerMask groundLayerMask;
+    public Vector2 maxRotation = new Vector2(-30, 30);
+    public GameObject armTransform;
+
+    public LayerMask groundLayerMask;
 
     private Animator animator;
     private Rigidbody2D rb2D;
@@ -75,6 +73,8 @@ public class CharacterController2D : MonoBehaviour
             Jump();
         else if (verticalMove < 0)
             DropFromPlatform();
+
+        UpdateArms();
     }
 
     private bool IsGrounded()
@@ -101,7 +101,8 @@ public class CharacterController2D : MonoBehaviour
             weapon.isFiring = false;
             weapon.enabled = false;
         }
-            
+        armTransform.transform.localRotation = Quaternion.Euler(0f, 0f, 0);
+
     }
 
     private void DropFromPlatform()
@@ -111,29 +112,49 @@ public class CharacterController2D : MonoBehaviour
 
     private void Move(float move)
     {
-        // Move the character by finding the target velocity
         Vector3 targetVelocity = new Vector2(move * 10f, rb2D.velocity.y);
-        // And then smoothing it out and applying it to the character
         rb2D.velocity = Vector3.SmoothDamp(rb2D.velocity, targetVelocity, ref velocity, movementSmoothing);
 
-        // If the input is moving the player right and the player is facing left...
-        if (move > 0 && !facingRight)
-        {
-            Flip();
-        }
-        // Otherwise if the input is moving the player left and the player is facing right...
-        else if (move < 0 && facingRight)
-        {
-            Flip();
-        }
     }
 
-
-    private void Flip()
+    public void ChangeWeapon(GameObject weapon)
     {
-        // Switch the way the player is labelled as facing.
-        facingRight = !facingRight;
+        if (armTransform == null || weapon == null)
+            return;
 
-        transform.Rotate(0f, 180f, 0f);
+        foreach (Transform child in armTransform.transform)
+        {
+            Destroy(child.gameObject);
+        }
+        this.weapon = Instantiate(weapon, armTransform.transform).GetComponent<PrefabWeapon>();
+
+    }
+
+    private void UpdateArms()
+    {
+        var pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        FacePosition(pos);
+        var dir = pos - armTransform.transform.position;
+        dir.Normalize();
+
+        if (transform.eulerAngles.y > 90)
+        {
+            dir.x *= -1;
+        }
+
+        float angle = Mathf.RoundToInt(Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg);
+        angle = Mathf.Clamp(angle, maxRotation.x, maxRotation.y);
+        armTransform.transform.localRotation = Quaternion.Euler(0f, 0f, angle);
+    }
+
+    protected void FacePosition(Vector3 position)
+    {
+        bool right = transform.position.x < position.x;
+        if (right != facingRight)
+        {
+            facingRight = !facingRight;
+            transform.Rotate(0f, 180f, 0f);
+        }
+
     }
 }

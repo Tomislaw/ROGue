@@ -556,7 +556,6 @@ GameObject:
   - component: {fileID: 6424108338425152576}
   - component: {fileID: 5229825840168970729}
   - component: {fileID: 784912391137885115}
-  - component: {fileID: 9014122581849020877}
   - component: {fileID: 5928591060159384888}
   m_Layer: 10
   m_Name: Player
@@ -598,6 +597,8 @@ MonoBehaviour:
   jumpSpeed: 850
   groundCheck: {fileID: 5932389499408252838}
   weapon: {fileID: 4006280621823899822}
+  maxRotation: {x: -30, y: 30}
+  armTransform: {fileID: 7269431544844342944}
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 24960
@@ -731,21 +732,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FlashMaterial: {fileID: 2100000, guid: 94071b4b85194d149b0a11237706a65f, type: 2}
   FlashSpeed: 0.1
---- !u!114 &9014122581849020877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6424108338425152584}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b7f14014578e3a40b5954f498969645, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxRotation: {x: -30, y: 30}
-  armTransform: {fileID: 7269431544844342944}
-  controller2D: {fileID: 6424108338425152580}
 --- !u!210 &5928591060159384888
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -1232,6 +1218,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 553ef14ff22858d40a3726d547aada12, type: 3}
+--- !u!4 &6424108338958473333 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2040140218017224042, guid: 553ef14ff22858d40a3726d547aada12, type: 3}
+  m_PrefabInstance: {fileID: 5005483561509784863}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &4006280621823899822 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8281598789869974961, guid: 553ef14ff22858d40a3726d547aada12, type: 3}
@@ -1243,8 +1234,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df60c8bec1b4a2e4c944bbabe45ce278, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &6424108338958473333 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2040140218017224042, guid: 553ef14ff22858d40a3726d547aada12, type: 3}
-  m_PrefabInstance: {fileID: 5005483561509784863}
-  m_PrefabAsset: {fileID: 0}
